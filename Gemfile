@@ -2,17 +2,15 @@ source 'https://rubygems.org'
 
 gem 'rails', '~> 5.0.2'
 
-gem 'rails-api'
-
 gem 'spring', group: :development
 
-gem 'rspec'
-
-gem 'simplecov'
-
-gem 'rubocop'
-
-gem 'sqlite3'
+group :development, :test do
+  gem 'rspec-rails', '~> 3.5'
+  gem 'simplecov'
+  gem 'rubocop'
+  gem 'sqlite3'
+  gem 'listen'
+end
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

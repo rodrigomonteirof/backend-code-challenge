@@ -6,3 +6,4 @@ AllCops:
     - 'lib/**/*'
     - 'db/**/*'
     - 'Rakefile'
+    - 'spec/**/*'
