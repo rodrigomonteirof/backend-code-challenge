@@ -11,6 +11,8 @@ gem 'rspec'
 
 gem 'simplecov'
 
+gem 'rubocop'
+
 gem 'sqlite3'
 
 # To use ActiveModel has_secure_password
