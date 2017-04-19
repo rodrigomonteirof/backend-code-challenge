@@ -1,11 +1,10 @@
 source 'https://rubygems.org'
 
-
 gem 'rails', '~> 5.0.2'
 
 gem 'rails-api'
 
-gem 'spring', :group => :development
+gem 'spring', group: :development
 
 gem 'rspec'
 
