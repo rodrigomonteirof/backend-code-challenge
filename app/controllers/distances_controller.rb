@@ -1,7 +1,7 @@
 class DistancesController < ApplicationController
   def create
     distance = Distance.find_or_create(distance_params[:origin],
-                                       distance_params[:destiny])
+                                       distance_params[:destination])
 
     distance.kilometers = distance_params[:kilometers]
 
@@ -15,6 +15,6 @@ class DistancesController < ApplicationController
   private
 
   def distance_params
-    params.permit(:origin, :destiny, :kilometers)
+    params.permit(:origin, :destination, :kilometers)
   end
 end

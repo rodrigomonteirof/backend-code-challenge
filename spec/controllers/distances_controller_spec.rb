@@ -5,7 +5,7 @@ describe DistancesController do
     subject { post :create, params: params }
 
     context 'when params is valid' do
-      let(:params) { { origin: 'A', destiny: 'B', kilometers: '10' } }
+      let(:params) { { origin: 'A', destination: 'B', kilometers: '10' } }
 
       it 'returns code 201' do
         subject
@@ -24,7 +24,7 @@ describe DistancesController do
 
       context 'and distance already exist' do
         before do
-          Distance.new({ origin: 'A', destiny: 'B', kilometers: '1' }).save
+          Distance.new({ origin: 'A', destination: 'B', kilometers: '1' }).save
         end
 
         it 'doesnt insert on database' do
@@ -40,7 +40,7 @@ describe DistancesController do
 
       context 'and exist other distance' do
         before do
-          post :create, params: { origin: 'B', destiny: 'C', kilometers: '15' }
+          post :create, params: { origin: 'B', destination: 'C', kilometers: '15' }
         end
 
         it 'persists on database' do
@@ -51,7 +51,7 @@ describe DistancesController do
     end
 
     context 'when params is invalid' do
-      let(:params) { { origin: 'A', destiny: 'B', kilometers: '0' } }
+      let(:params) { { origin: 'A', destination: 'B', kilometers: '0' } }
 
       it 'returns code 400' do
         subject
