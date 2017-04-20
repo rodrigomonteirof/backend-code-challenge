@@ -10,6 +10,7 @@ group :development, :test do
   gem 'rubocop'
   gem 'sqlite3'
   gem 'listen'
+  gem 'byebug'
 end
 
 # To use ActiveModel has_secure_password
