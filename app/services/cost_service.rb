@@ -1,13 +1,13 @@
 class CostService
-  attr :kilometers
+  attr_reader :weight
 
   TAX = 0.15
 
-  def initialize(kilometers)
-    @kilometers = kilometers
+  def initialize(weight)
+    @weight = weight
   end
 
-  def calculate(weight)
-    @kilometers * weight * TAX
+  def calculate(kilometers)
+    kilometers * weight * TAX
   end
 end
