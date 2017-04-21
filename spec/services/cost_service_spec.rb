@@ -9,6 +9,34 @@ describe CostService do
     end
   end
 
+  describe '.valid?' do
+    subject { described_class.new(weight).valid? }
+
+    context 'when weight is valid' do
+      let(:weight) { 5 }
+
+      it 'returns true' do
+        is_expected.to be_truthy
+      end
+    end
+
+    context 'when weight is too low' do
+      let(:weight) { 0 }
+
+      it 'returns false' do
+        is_expected.to be_falsey
+      end
+    end
+
+    context 'when weight is too high' do
+      let(:weight) { 51 }
+
+      it 'returns false' do
+        is_expected.to be_falsey
+      end
+    end
+  end
+
   describe '.calculate' do
     subject { described_class.new(5).calculate(kilometers) }
 
