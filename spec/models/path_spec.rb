@@ -87,4 +87,31 @@ describe Path do
       end
     end
   end
+
+  describe '.end' do
+    subject { instance.end }
+
+    let(:instance) { described_class.new }
+
+    context 'when has only one distance' do
+      before do
+        instance.distances << Distance.new({origin: 'A', destination: 'B', kilometers: 10})
+      end
+
+      it 'returns "B"' do
+        is_expected.to eq('B')
+      end
+    end
+
+    context 'when has two distances' do
+      before do
+        instance.distances << Distance.new({origin: 'A', destination: 'B', kilometers: 10})
+        instance.distances << Distance.new({origin: 'A', destination: 'C', kilometers: 10})
+      end
+
+      it 'returns the last' do
+        is_expected.to eq('C')
+      end
+    end
+  end
 end

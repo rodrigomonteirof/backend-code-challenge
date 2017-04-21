@@ -16,4 +16,8 @@ class Path
   def distance
     distances.map(&:kilometers).inject(:+)
   end
+
+  def end
+    distances.last.destination
+  end
 end
