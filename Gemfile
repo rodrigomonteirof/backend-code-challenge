@@ -11,6 +11,7 @@ group :development, :test do
   gem 'sqlite3'
   gem 'listen'
   gem 'byebug'
+  gem 'guard-rspec'
   gem 'rubycritic', require: false
 end
 

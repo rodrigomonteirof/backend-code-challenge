@@ -7,5 +7,6 @@ AllCops:
     - 'db/**/*'
     - 'Rakefile'
     - 'spec/**/*'
+    - 'Guardfile'
 Documentation:
   Enabled: false
