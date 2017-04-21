@@ -50,10 +50,8 @@ describe Path do
     let(:instance) { Path.new }
 
     context 'when has one distance' do
-      let(:distance) { Distance.new({origin: 'A', destination: 'B', kilometers: kilometers}) }
-
       before do
-        instance.distances << distance
+        instance.distances << double(kilometers: kilometers)
       end
 
       context 'with 10 kilometers' do
@@ -74,12 +72,9 @@ describe Path do
     end
 
     context 'when has two distances' do
-      let(:distance1) { Distance.new({origin: 'A', destination: 'B', kilometers: 10}) }
-      let(:distance2) { Distance.new({origin: 'B', destination: 'C', kilometers: 15}) }
-
       before do
-        instance.distances << distance1
-        instance.distances << distance2
+        instance.distances << double(kilometers: 10)
+        instance.distances << double(kilometers: 15)
       end
 
       it 'sums the distances' do
@@ -95,7 +90,7 @@ describe Path do
 
     context 'when has only one distance' do
       before do
-        instance.distances << Distance.new({origin: 'A', destination: 'B', kilometers: 10})
+        instance.distances << double(destination: 'B')
       end
 
       it 'returns "B"' do
@@ -105,8 +100,8 @@ describe Path do
 
     context 'when has two distances' do
       before do
-        instance.distances << Distance.new({origin: 'A', destination: 'B', kilometers: 10})
-        instance.distances << Distance.new({origin: 'A', destination: 'C', kilometers: 10})
+        instance.distances << double(destination: 'B')
+        instance.distances << double(destination: 'C')
       end
 
       it 'returns the last' do
