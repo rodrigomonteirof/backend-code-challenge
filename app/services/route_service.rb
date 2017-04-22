@@ -7,10 +7,6 @@ class RouteService
     @paths = []
   end
 
-  def distances_from(place)
-    Distance.where(origin: place)
-  end
-
   def find_shortest
     load_paths(origin) if @paths.blank?
 
@@ -26,7 +22,7 @@ class RouteService
   end
 
   def load_paths(place, path = Path)
-    distances_from(place).each do |distance|
+    Distance.where(origin: place).each do |distance|
       @paths << path.create_new(distance)
     end
   end

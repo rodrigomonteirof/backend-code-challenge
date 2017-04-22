@@ -19,43 +19,6 @@ describe RouteService do
     end
   end
 
-  describe '.distances_from' do
-    subject { described_class.new('A', 'B').distances_from('A') }
-
-    context 'when doesnt have distance' do
-      it 'returns zero' do
-        expect(subject.count).to eq(0)
-      end
-    end
-
-    context 'when has only one distance' do
-      let(:distance) { Distance.new({origin: 'A', destination: 'C', kilometers: 5}) }
-
-      before do
-        distance.save
-      end
-
-      it 'returns one' do
-        expect(subject.count).to eq(1)
-      end
-
-      it 'returns ona array with the distance' do
-        expect(subject.first).to eq(distance)
-      end
-    end
-
-    context 'when has two distances' do
-      before do
-        Distance.create({origin: 'A', destination: 'C', kilometers: 5})
-        Distance.create({origin: 'A', destination: 'B', kilometers: 10})
-      end
-
-      it 'returns two' do
-        expect(subject.count).to eq(2)
-      end
-    end
-  end
-
   describe '.find_shortest' do
     subject { instance.find_shortest }
 
