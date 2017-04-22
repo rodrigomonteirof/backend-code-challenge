@@ -1,5 +1,5 @@
 class CostService
- include ActiveModel::Validations
+  include ActiveModel::Validations
 
   attr_reader :weight
 
