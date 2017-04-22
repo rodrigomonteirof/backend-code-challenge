@@ -21,8 +21,8 @@ class RouteService
     find_shortest
   end
 
-  def load_paths(place, path = Path)
-    Distance.where(origin: place).each do |distance|
+  def load_paths(point, path = Path)
+    Distance.where(origin: point).each do |distance|
       @paths << path.create_new(distance)
     end
   end
