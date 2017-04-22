@@ -2,45 +2,30 @@ require 'rails_helper'
 
 describe Path do
   describe '.new' do
-    subject { described_class.new }
+    context 'when has only distance' do
+      subject { described_class.new(distance) }
+
+      let(:distance) { Distance.new }
+
+      it 'adds distance' do
+        expect(subject.distances).to eq([distance])
+      end
+    end
+
+    context 'when has distance and path' do
+      subject { described_class.new(distance, path) }
+
+      let(:path) { Path.new(distance_old) }
+      let(:distance_old) { Distance.new }
+      let(:distance) { Distance.new }
+
+      it 'adds two distances' do
+        expect(subject.distances).to eq([distance_old, distance])
+      end
+    end
 
     it 'has distances as Array' do
       expect(subject.distances).to be_a(Array)
-    end
-  end
-
-  describe '.create_new' do
-    subject { instance.create_new(distance) }
-
-    let(:instance) { Path.new }
-    let(:distance) { Distance.new({origin: 'A', destination: 'B', kilometers: 10}) }
-
-    it 'returns a instance of path' do
-      is_expected.to be_a(Path)
-    end
-
-    it 'returns a new instance' do
-      is_expected.not_to eq(instance)
-    end
-
-    it 'adds attribute in distances array' do
-      expect(subject.distances).to eq([distance])
-    end
-
-    context 'when distances has one' do
-      let(:distance_old) { Distance.new({origin: 'B', destination: 'C', kilometers: 15}) }
-
-      before do
-        instance.distances << distance_old
-      end
-
-      it 'adds previous distancies with the new distance' do
-        expect(subject.distances.count).to eq(2)
-      end
-
-      it 'keeps the order' do
-        expect(subject.distances).to eq([distance_old, distance])
-      end
     end
   end
 
@@ -85,7 +70,6 @@ describe Path do
 
   describe '.end' do
     subject { instance.end }
-
     let(:instance) { described_class.new }
 
     context 'when has only one distance' do

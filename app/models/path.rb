@@ -1,22 +1,11 @@
 class Path
   attr_reader :distances
 
-  def initialize
+  def initialize(distance = nil, path = nil)
     @distances = []
-  end
-
-  def self.create_new(distance)
-    new.tap do |path|
-      path.distances << distance
-    end
-  end
-
-  def create_new(distance)
-    Path.new.tap do |path|
-      path.distances << @distances
-      path.distances << distance
-      path.distances.flatten!
-    end
+    @distances << path.distances if path.present?
+    @distances << distance if distance.present?
+    @distances.flatten!
   end
 
   def distance
