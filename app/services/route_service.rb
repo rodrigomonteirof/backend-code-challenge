@@ -12,31 +12,23 @@ class RouteService
   end
 
   def find_shortest
-    distances = distances_from(origin)
+    load_paths(origin) if @paths.blank?
 
-    distances.each do |distance|
-      path = Path.new
-      path.distances << distance
-      @paths << path
-    end
-
-    dijkstra_recursivity
-  end
-
-  def dijkstra_recursivity
     path = shortest_path
 
     return path if path.end == destination
 
-    distances = distances_from(path.end)
-
-    distances.each do |distance|
-      @paths << path.create_new(distance)
-    end
+    load_paths(path.end, path)
 
     remove_path(path)
 
-    dijkstra_recursivity
+    find_shortest
+  end
+
+  def load_paths(place, path = Path)
+    distances_from(place).each do |distance|
+      @paths << path.create_new(distance)
+    end
   end
 
   def remove_path(path)

@@ -5,12 +5,18 @@ class Path
     @distances = []
   end
 
+  def self.create_new(distance)
+    new.tap do |path|
+      path.distances << distance
+    end
+  end
+
   def create_new(distance)
-    path = Path.new
-    path.distances << @distances
-    path.distances << distance
-    path.distances.flatten!
-    path
+    Path.new.tap do |path|
+      path.distances << @distances
+      path.distances << distance
+      path.distances.flatten!
+    end
   end
 
   def distance

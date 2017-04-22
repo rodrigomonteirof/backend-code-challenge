@@ -97,6 +97,36 @@ describe RouteService do
     end
   end
 
+  describe '.remove_path' do
+    subject { instance.remove_path(path) }
+
+    let(:instance) { described_class.new('A', 'B') }
+    let(:path) { Path.new }
+
+    context 'when one path' do
+      before do
+        instance.paths << path
+      end
+
+      it 'deletes the path' do
+        subject
+        expect(instance.paths).to eq([])
+      end
+    end
+
+    context 'when has two paths' do
+      before do
+        instance.paths << path
+        instance.paths << Path.new
+      end
+
+      it 'deletes only one' do
+        subject
+        expect(instance.paths.count).to eq(1)
+      end
+    end
+  end
+
   describe '.shortest_path' do
     subject { instance.shortest_path }
 
@@ -131,36 +161,6 @@ describe RouteService do
 
       it 'retuns the shortest path' do
         is_expected.to eq(short_path)
-      end
-    end
-  end
-
-  describe '.remove_path' do
-    subject { instance.remove_path(path) }
-
-    let(:instance) { described_class.new('A', 'B') }
-    let(:path) { Path.new }
-
-    context 'when one path' do
-      before do
-        instance.paths << path
-      end
-
-      it 'deletes the path' do
-        subject
-        expect(instance.paths).to eq([])
-      end
-    end
-
-    context 'when has two paths' do
-      before do
-        instance.paths << path
-        instance.paths << Path.new
-      end
-
-      it 'deletes only one' do
-        subject
-        expect(instance.paths.count).to eq(1)
       end
     end
   end
