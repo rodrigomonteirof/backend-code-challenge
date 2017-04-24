@@ -21,17 +21,19 @@ class RouteService
     find_shortest
   end
 
-  def load_paths(point, path = nil)
-    Distance.where(origin: point).each do |distance|
-      @paths << Path.new(distance, path)
-    end
-  end
-
   def remove_path(path)
     @paths.delete(path)
   end
 
   def shortest_path
     @paths.sort_by(&:distance).first
+  end
+
+  private
+
+  def load_paths(point, path = nil)
+    Distance.where(origin: point).each do |distance|
+      @paths << Path.new(distance, path)
+    end
   end
 end
