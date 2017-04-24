@@ -1,21 +1,23 @@
 require 'rails_helper'
 
 describe RouteService do
-  let(:instance) { described_class.new('A', 'C') }
-
   describe '.new' do
     subject { instance }
 
-    it 'sets origin' do
-      expect(subject.origin).to eq('A')
-    end
+    context 'when has origin and destination' do
+      let(:instance) { described_class.new('A', 'C') }
 
-    it 'sets destination' do
-       expect(subject.destination).to eq('C')
-    end
+      it 'sets origin' do
+        expect(subject.origin).to eq('A')
+      end
 
-    it 'has path as an Array' do
-      expect(subject.paths).to be_a(Array)
+      it 'sets destination' do
+        expect(subject.destination).to eq('C')
+      end
+
+      it 'has path as an Array' do
+        expect(subject.paths).to be_a(Array)
+      end
     end
   end
 
