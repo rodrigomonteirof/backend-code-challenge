@@ -1,5 +1,9 @@
 class RouteService
+  include ActiveModel::Validations
+
   attr_reader :origin, :destination, :paths
+
+  validates_presence_of :origin, :destination
 
   def initialize(origin, destination)
     @origin = origin
