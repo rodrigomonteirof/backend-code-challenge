@@ -8,7 +8,7 @@ class CostService
   TAX = 0.15
 
   def initialize(weight)
-    @weight = weight
+    @weight = weight.to_i
   end
 
   def calculate(kilometers)
