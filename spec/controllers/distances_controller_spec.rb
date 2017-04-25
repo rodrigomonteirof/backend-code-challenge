@@ -53,9 +53,9 @@ describe DistancesController do
     context 'when params is invalid' do
       let(:params) { { origin: 'A', destination: 'B', kilometers: '0' } }
 
-      it 'returns code 400' do
+      it 'returns code 422' do
         subject
-        expect(response.code).to eq('400')
+        expect(response.code).to eq('422')
       end
 
       it 'retusn a josn with error' do

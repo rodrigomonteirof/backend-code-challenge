@@ -45,9 +45,9 @@ describe CostsController do
     context 'when weight is too high' do
       let(:params) { { origin: 'A', destination: 'C', weight: 51 } }
 
-      it 'returns code 400' do
+      it 'returns code 422' do
         subject
-        expect(response.code).to eq('400')
+        expect(response.code).to eq('422')
       end
 
       it 'returns error message' do
@@ -59,9 +59,9 @@ describe CostsController do
     context 'when weight is too low' do
       let(:params) { { origin: 'A', destination: 'C', weight: 0 } }
 
-      it 'returns code 400' do
+      it 'returns code 422' do
         subject
-        expect(response.code).to eq('400')
+        expect(response.code).to eq('422')
       end
 
       it 'returns error message' do
@@ -73,9 +73,9 @@ describe CostsController do
     context 'when path doesnt exist' do
       let(:params) { { origin: 'A', destination: 'Z', weight: 5 } }
 
-      it 'returns code 400' do
+      it 'returns code 404' do
         subject
-        expect(response.code).to eq('400')
+        expect(response.code).to eq('404')
       end
 
       it 'returns error message' do

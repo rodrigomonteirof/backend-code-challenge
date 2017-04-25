@@ -6,9 +6,9 @@ class DistancesController < ApplicationController
     distance.kilometers = distance_params[:kilometers]
 
     if distance.valid? && distance.save
-      render json: distance, status: 201
+      render json: distance, status: :created
     else
-      render json: distance.errors, status: 400
+      render json: distance.errors, status: :unprocessable_entity
     end
   end
 
