@@ -5,12 +5,13 @@ class RouteService
     @origin = origin
     @destination = destination
     @paths = []
+    load_paths(origin)
   end
 
   def find_shortest
-    load_paths(origin) if @paths.blank?
-
     path = shortest_path
+
+    return if path.blank?
 
     return path if path.end == destination
 
