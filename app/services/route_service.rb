@@ -1,10 +1,10 @@
 class RouteService
-  attr_reader :origin, :destination, :paths
+  attr_reader :origin, :destination, :possibile_paths
 
   def initialize(origin, destination)
     @origin = origin
     @destination = destination
-    @paths = []
+    @possibile_paths = []
     load_paths(origin)
   end
 
@@ -26,15 +26,15 @@ class RouteService
 
   def load_paths(point, path = nil)
     Distance.where(origin: point).each do |distance|
-      @paths << Path.new(distance, path)
+      @possibile_paths << Path.new(distance, path)
     end
   end
 
   def remove_path(path)
-    @paths.delete(path)
+    @possibile_paths.delete(path)
   end
 
   def shortest_path
-    @paths.sort_by(&:distance).first
+    @possibile_paths.sort_by(&:distance).first
   end
 end

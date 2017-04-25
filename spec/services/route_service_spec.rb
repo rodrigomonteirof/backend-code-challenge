@@ -16,7 +16,7 @@ describe RouteService do
       end
 
       it 'has path as an Array' do
-        expect(subject.paths).to be_a(Array)
+        expect(subject.possibile_paths).to be_a(Array)
       end
     end
   end
