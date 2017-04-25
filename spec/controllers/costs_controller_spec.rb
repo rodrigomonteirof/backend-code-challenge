@@ -69,5 +69,19 @@ describe CostsController do
         expect(response.body).to eq('{"weight":["is not included in the list"]}')
       end
     end
+
+    context 'when path doesnt exist' do
+      let(:params) { { origin: 'A', destination: 'Z', weight: 5 } }
+
+      it 'returns code 400' do
+        subject
+        expect(response.code).to eq('400')
+      end
+
+      it 'returns error message' do
+        subject
+        expect(response.body).to eq('{"error":"Path not found"}')
+      end
+    end
   end
 end
