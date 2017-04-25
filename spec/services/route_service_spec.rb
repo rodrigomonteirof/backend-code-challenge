@@ -21,34 +21,6 @@ describe RouteService do
     end
   end
 
-  describe '.valid?' do
-    subject { instance.valid? }
-
-    context 'when has origin and destination' do
-      let(:instance) { described_class.new('A', 'C') }
-
-      it 'returns true' do
-        is_expected.to be_truthy
-      end
-    end
-
-    context 'when origin is missing' do
-      let(:instance) { described_class.new(nil, 'C') }
-
-      it 'returns false' do
-        is_expected.to be_falsey
-      end
-    end
-
-    context 'when origin is missing' do
-      let(:instance) { described_class.new('A', nil) }
-
-      it 'returns false' do
-        is_expected.to be_falsey
-      end
-    end
-  end
-
   describe '.find_shortest' do
     subject { instance.find_shortest }
 

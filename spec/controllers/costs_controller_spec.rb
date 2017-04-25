@@ -69,33 +69,5 @@ describe CostsController do
         expect(response.body).to eq('{"weight":["is not included in the list"]}')
       end
     end
-
-    context 'when origin is missing' do
-      let(:params) { { destination: 'C', weight: 25 } }
-
-      it 'returns code 400' do
-        subject
-        expect(response.code).to eq('400')
-      end
-
-      it 'returns error message' do
-        subject
-        expect(response.body).to eq('{"origin":["can\'t be blank"]}')
-      end
-    end
-
-    context 'when destination is missing' do
-      let(:params) { { origin: 'A', weight: 25 } }
-
-      it 'returns code 400' do
-        subject
-        expect(response.code).to eq('400')
-      end
-
-      it 'returns error message' do
-        subject
-        expect(response.body).to eq('{"destination":["can\'t be blank"]}')
-      end
-    end
   end
 end
