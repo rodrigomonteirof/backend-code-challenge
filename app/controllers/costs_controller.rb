@@ -1,6 +1,6 @@
 class CostsController < ApplicationController
   def show
-    cost_service = CostService.new(params[:weight])
+    cost_service = CostService.new(cost_params[:weight])
 
     return render json: cost_service.errors, status: 400 unless cost_service.valid?
 
