@@ -62,3 +62,27 @@ That's it. There aren't any hidden gotchas or trick questions. That's really wha
 ## License
 
 We have licensed this project under the MIT license so that you may use this for a portfolio piece (or anything else!).
+
+## Summary
+
+Its a Rails-Api application that uses the Rails stack default with Rspec for automated tests.
+
+## How to install
+
+```
+bundle install
+bundle exec rake db:migrate
+```
+
+## How to run
+
+```
+bundle rails s
+```
+
+## How to run test suit
+
+```
+bundle exec rspec
+```
+
