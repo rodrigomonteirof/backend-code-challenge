@@ -8,7 +8,7 @@ class RouteService
     load_paths(origin)
   end
 
-  def find_shortest
+  def find_shortest_path
     path = shortest_path
 
     return if path.blank?
@@ -19,7 +19,7 @@ class RouteService
 
     remove_path(path)
 
-    find_shortest
+    find_shortest_path
   end
 
   private

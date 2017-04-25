@@ -5,12 +5,12 @@ class CostsController < ApplicationController
     return render json: cost_service.errors, status: 400 unless cost_service.valid?
 
     path = RouteService.new(cost_params[:origin],
-                            cost_params[:destination]).find_shortest
+                            cost_params[:destination]).find_shortest_path
 
     if path.present?
       render json: { cost: cost_service.calculate(path.distance) }, status: 200
     else
-      render json: { error: 'Path not found'}, status: 400
+      render json: { error: 'Path not found' }, status: 400
     end
   end
 

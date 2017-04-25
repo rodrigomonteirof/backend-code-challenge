@@ -21,8 +21,8 @@ describe RouteService do
     end
   end
 
-  describe '.find_shortest' do
-    subject { instance.find_shortest }
+  describe '.find_shortest_path' do
+    subject { instance.find_shortest_path }
 
     context 'when path exists' do
       let(:instance) { described_class.new('A', 'C') }
